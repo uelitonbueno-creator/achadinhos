@@ -1,0 +1,99 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --text:#171a22;
+  --muted:#5f6673;
+  --border:#e7e9ef;
+  --accent:#111827;
+  --accent-soft:#eef1f6;
+  --max:920px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.65;
+}
+.container{width:min(calc(100% - 32px),var(--max));margin:0 auto}
+.hero{
+  padding:72px 0 48px;
+  background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);
+  border-bottom:1px solid var(--border);
+}
+.hero h1{font-size:clamp(2.5rem,8vw,4.5rem);line-height:1;margin:.2rem 0 1rem;letter-spacing:-.04em}
+.hero p{max-width:720px;font-size:1.15rem;color:var(--muted);margin:0}
+.badge{
+  display:inline-block;
+  padding:.35rem .7rem;
+  border-radius:999px;
+  background:var(--accent-soft);
+  font-size:.85rem;
+  font-weight:700;
+}
+main{padding:32px 0 56px}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:28px;
+  margin-bottom:22px;
+  box-shadow:0 8px 26px rgba(17,24,39,.04);
+}
+h1,h2,h3{line-height:1.2}
+h2{margin-top:0;font-size:1.55rem}
+h3{margin-top:2rem}
+p,li{color:#2c3340}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.button{
+  display:inline-block;
+  text-decoration:none;
+  padding:.8rem 1rem;
+  border-radius:10px;
+  background:var(--accent);
+  color:white;
+  font-weight:700;
+}
+.button.secondary{background:var(--accent-soft);color:var(--text)}
+a{color:#1d4ed8}
+.legal-header{
+  padding:42px 0 22px;
+}
+.legal-header a{text-decoration:none}
+.legal h1{font-size:clamp(2rem,5vw,3.1rem);margin:.5rem 0}
+.legal .updated{color:var(--muted);font-size:.95rem}
+.legal section{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  margin:16px 0;
+}
+.notice{
+  padding:14px 16px;
+  background:#fff8e6;
+  border:1px solid #f2dfaa;
+  border-radius:12px;
+}
+footer{
+  border-top:1px solid var(--border);
+  background:#fff;
+  padding:24px 0 36px;
+  color:var(--muted);
+}
+footer .container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+footer p{margin:0;color:var(--muted)}
+footer nav{display:flex;gap:16px}
+footer a{text-decoration:none}
+@media (max-width:600px){
+  .hero{padding-top:48px}
+  .card,.legal section{padding:20px}
+}
