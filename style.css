@@ -97,3 +97,16 @@ footer a{text-decoration:none}
   .hero{padding-top:48px}
   .card,.legal section{padding:20px}
 }
+/* Página pública de captação de membros por interesse */
+.group-hero{padding-top:52px}
+.group-hero .back-link{display:block;margin-bottom:20px;text-decoration:none}
+.group-hero .badge{display:table;margin-bottom:14px}
+.group-hero h1{max-width:730px}
+.group-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.group-tile{padding:20px;border:1px solid var(--border);border-radius:14px;background:#fcfdff;display:flex;flex-direction:column;gap:10px}
+.group-tile h3{margin:0;font-size:1.2rem}
+.group-tile p{margin:0}
+.group-tile .links{margin-top:auto;padding-top:8px}
+.invite-pending{color:var(--muted);font-size:.9rem;font-style:italic}
+.small-disclosure{font-size:.85rem;color:var(--muted);margin-bottom:0}
+@media(max-width:600px){.group-grid{grid-template-columns:1fr}.group-tile{padding:18px}}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Achadinhos — Facebook</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui,-apple-system,"Segoe UI",sans-serif; }
+    * { box-sizing: border-box; }
+    body { width: 392px; margin: 0; background:#f3f6fa; color:#172033; font-size:13px; }
+    header { padding:15px 18px; background:#101d36; color:#fff; }
+    header h1 { font-size:17px; margin:0 0 4px; }
+    header p { color:#c9d4ec; margin:0; font-size:12px; }
+    main { padding:14px; display:grid; gap:12px; }
+    section { background:#fff; border:1px solid #dfe5ed; border-radius:12px; padding:13px; }
+    h2 { font-size:14px; margin:0 0 11px; }
+    label { display:block; margin:10px 0 5px; font-weight:650; }
+    input, select, textarea { width:100%; border:1px solid #bbc8d7; border-radius:8px; padding:9px; font:inherit; background:#fff; color:#172033; }
+    textarea { min-height:158px; resize:vertical; line-height:1.4; }
+    input:focus,select:focus,textarea:focus,button:focus-visible { outline:2px solid #2978d9; outline-offset:1px; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+    button { border:0; border-radius:8px; padding:9px 11px; font:inherit; font-weight:700; cursor:pointer; background:#e8eef8; color:#172033; }
+    button.primary { background:#1b67c9; color:white; }
+    button.secondary { background:#f0f3f8; }
+    button:disabled { opacity:.55; cursor:not-allowed; }
+    .small { font-size:11px; color:#586779; margin:8px 0 0; }
+    .status { min-height:17px; color:#12613a; margin:8px 0 0; font-weight:650; }
+    .status.error { color:#aa2222; }
+    .history { max-height:122px; overflow:auto; padding-left:20px; margin:8px 0 0; }
+    .history li { padding:3px 0; }
+    footer { padding:0 14px 14px; color:#586779; font-size:11px; }
+  </style>
+  <script defer src="popup.js"></script>
+</head>
+<body>
+  <header><h1>Achadinhos · Facebook</h1><p>Organize convites por nicho e publique com revisão humana.</p></header>
+  <main>
+    <section>
+      <h2>1. Destino da divulgação</h2>
+      <label for="nicho">Nicho</label>
+      <select id="nicho">
+        <option>Geral</option><option>Mercado</option><option>Academia &amp; Fitness</option>
+        <option>Moda</option><option>Pescaria</option><option>Airsoft</option>
+        <option>Geek</option><option>SHEIN/Temu</option>
+      </select>
+      <label for="convite">Link da página de grupos ou convite deste nicho</label>
+      <input type="url" id="convite" placeholder="https://...">
+      <label for="facebook">Página ou grupo Facebook autorizado (opcional)</label>
+      <input type="url" id="facebook" placeholder="https://www.facebook.com/...">
+      <div class="actions"><button id="salvarDestino">Salvar destino</button></div>
+      <p class="small">URLs ficam apenas neste navegador. Use uma página de grupos para medir as origens do tráfego.</p>
+    </section>
+    <section>
+      <h2>2. Criar publicação</h2>
+      <label for="produto">Produto ou tema</label>
+      <input id="produto" maxlength="140" placeholder="Ex.: Mochila resistente para pescaria">
+      <div class="row">
+        <div><label for="antes">De (R$)</label><input id="antes" inputmode="decimal" maxlength="15" placeholder="149,90"></div>
+        <div><label for="agora">Por (R$)</label><input id="agora" inputmode="decimal" maxlength="15" placeholder="99,90"></div>
+      </div>
+      <label for="observacao">Benefício ou contexto (opcional)</label>
+      <input id="observacao" maxlength="160" placeholder="Ex.: para trilhas e pescarias">
+      <div class="actions"><button class="primary" id="gerar">Gerar texto</button></div>
+      <label for="texto">Rascunho editável</label>
+      <textarea id="texto" aria-label="Texto da publicação"></textarea>
+      <div class="actions">
+        <button id="copiar" class="primary">Copiar texto</button>
+        <button id="abrir">Abrir Facebook</button>
+        <button id="publicado" class="secondary">Marcar como publicado</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <p class="small">A extensão NÃO publica automaticamente. Confirme preço, disponibilidade e permissão antes de publicar.</p>
+    </section>
+    <section>
+      <h2>3. Histórico local</h2>
+      <p class="small">Somente registros marcados manualmente. Não são confirmações do Facebook.</p>
+      <ol id="historico" class="history"></ol>
+      <div class="actions"><button id="csv">Exportar CSV</button><button id="limpar" class="secondary">Limpar histórico</button></div>
+    </section>
+  </main>
+  <footer>Assistente de publicação manual · v0.1.0</footer>
+</body>
+</html>
