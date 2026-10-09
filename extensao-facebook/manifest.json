@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Achadinhos — Assistente Facebook",
+  "description": "Rascunhos, convites por nicho e registro manual de publicações. Sem disparos automáticos.",
+  "version": "0.1.0",
+  "action": {
+    "default_title": "Achadinhos Facebook",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage"]
+}
