@@ -29,9 +29,14 @@
     .status.error { color:#aa2222; }
     .history { max-height:122px; overflow:auto; padding-left:20px; margin:8px 0 0; }
     .history li { padding:3px 0; }
+    .public-group { padding:8px 0; border-top:1px solid #e7ebf2; }
+    .public-group .small { margin-top:3px; }
+    .checkbox-label { display:flex; gap:7px; align-items:flex-start; font-weight:400; line-height:1.4; }
+    .checkbox-label input { width:auto; margin-top:3px; flex:none; }
     footer { padding:0 14px 14px; color:#586779; font-size:11px; }
   </style>
   <script defer src="popup.js"></script>
+  <script defer src="grupos-publicos.js"></script>
 </head>
 <body>
   <header><h1>Achadinhos · Facebook</h1><p>Organize convites por nicho e publique com revisão humana.</p></header>
@@ -78,7 +83,25 @@
       <ol id="historico" class="history"></ol>
       <div class="actions"><button id="csv">Exportar CSV</button><button id="limpar" class="secondary">Limpar histórico</button></div>
     </section>
+    <section>
+      <h2>4. Divulgação em grupos públicos</h2>
+      <p class="small">Cadastre somente grupos onde anúncios e convites sejam permitidos pelas regras. Visitantes podem publicar em alguns grupos públicos, mas isso não é garantido.</p>
+      <label for="grupoNome">Nome do grupo Facebook</label>
+      <input id="grupoNome" maxlength="100" placeholder="Ex.: Promoções de Curitiba">
+      <label for="grupoUrl">URL do grupo</label>
+      <input type="url" id="grupoUrl" placeholder="https://www.facebook.com/groups/...">
+      <label for="grupoAcesso">Sua condição no grupo</label>
+      <select id="grupoAcesso"><option value="visitante">Visitante / não membro</option><option value="membro">Membro</option></select>
+      <label class="checkbox-label"><input type="checkbox" id="grupoDivulgacaoPermitida">Confirmei que as regras do grupo permitem este tipo de publicação (ofertas/convites).</label>
+      <div class="actions"><button id="salvarGrupo">Cadastrar grupo</button><button id="proximoGrupo" class="secondary">Próximo elegível</button></div>
+      <p class="small" id="resumoGrupos"></p>
+      <div id="listaGruposPublicos" aria-label="Grupos cadastrados"></div>
+      <p class="small" id="grupoSelecionado">Nenhum grupo selecionado.</p>
+      <div class="actions"><button id="conviteGeral">Usar convite geral</button><button id="abrirGrupo">Abrir grupo</button><button id="marcarGrupo">Registrar publicação manual</button><button id="csvGrupos">Exportar registros</button></div>
+      <p id="statusGrupos" class="status" role="status" aria-live="polite"></p>
+      <p class="small">Não há disparos automáticos nem confirmações de postagem por API. Intervalo preventivo: 7 dias por grupo, com registro local de cada envio informado pelo operador.</p>
+    </section>
   </main>
-  <footer>Assistente de publicação manual · v0.1.0</footer>
+  <footer>Assistente de publicação manual · v0.2.0</footer>
 </body>
 </html>
